@@ -1,7 +1,7 @@
 {
-	"name": "<WORKER_NAME>",
+	"name": "yearly-update",
 	"main": "src/index.js",
-	"compatibility_date": "<COMPATIBILITY_DATE>",
+	"compatibility_date": "2026-01-06",
 	"observability": {
 		"enabled": true,
 	},
