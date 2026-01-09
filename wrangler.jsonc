@@ -3,6 +3,11 @@
 	"main": "src/index.js",
 	"compatibility_date": "2026-01-06",
 	"observability": {
-		"enabled": true,
+		"enabled": true
 	},
+	"triggers": {
+		"crons": [
+			"0 0 * * *"
+		]
+	}
 }

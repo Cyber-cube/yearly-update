@@ -22,7 +22,11 @@ export default {
 		}
 		const data = {
 			1: "13-5",
-			2: "1-0"
+			2: "0-9",
+			3: "30-4",
+			4: "12-3",
+			5: "14-5",
+			18: "21-5",
 		}
 
 		const dateAsList = [new Date().getUTCDay(), new Date().getUTCMonth()]
