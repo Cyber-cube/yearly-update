@@ -46,7 +46,7 @@ export default {
 	},
 	async fetch(request, env, ctx) {
 		const sendRequest = async (repoName) => {
-			const response = await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update/`, {
+			await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update/`, {
 				headers: {
 					"Accept": "application/vnd.github+json",
 					"X-GitHub-Api-Version": "2022-11-28",
@@ -54,7 +54,6 @@ export default {
 					"Authorization": `Bearer ${env.GH_TOKEN}`,
 				}
 			})
-			const data = response.json()
 			throw new Response(data)
 		}
 		const data = {
