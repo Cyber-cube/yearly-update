@@ -54,7 +54,7 @@ export default {
 					"Authorization": `Bearer ${env.GH_TOKEN}`,
 				}
 			})
-			return new Response(data)
+			// return new Response(data)
 		}
 		const data = {
 			1: "13-5",
