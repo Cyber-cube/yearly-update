@@ -45,7 +45,7 @@ export default {
 
 	},
 	async fetch(request, env, ctx) {
-		const sendRequest = async (repoName) => {
+		/* const sendRequest = async (repoName) => {
 			await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update/`, {
 				headers: {
 					"Accept": "application/vnd.github+json",
@@ -54,8 +54,7 @@ export default {
 					"Authorization": `Bearer ${env.GH_TOKEN}`,
 				}
 			})
-			// return new Response(data)
-		}
+		} */
 		const data = {
 			1: "13-5",
 			2: "0-11",
@@ -76,7 +75,8 @@ export default {
 		}
 
 		need.forEach((repoName) => {
-			sendRequest(repoName)
+			// sendRequest(repoName)
+			console.log("Meow")
 		})
 	},
 };
