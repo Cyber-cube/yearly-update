@@ -8,6 +8,8 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+const fs = require("fs")
+
 export default {
 	async scheduled(controllee, env, ctx) {
 		const sendRequest = async (repoName) => {
@@ -42,6 +44,18 @@ export default {
 		need.forEach((repoName) => {
 			sendRequest(repoName)
 		})
+
+		fs.readFile("./test.json", ((err, data) => {
+			if (err) throw err
+
+			const parsedData = JSON.parse(data)
+			parsedData.test += 1
+			const object = JSON.stringify(parsedData, false, 2)
+
+			fs.writeFile("./test.json", object, (err) => {
+				if (err) throw err
+			})
+		}))
 
 	},
 	async fetch(request, env, ctx) {
