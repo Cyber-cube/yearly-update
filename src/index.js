@@ -8,7 +8,7 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import fs from "fs"
+import fs from "node:fs"
 
 export default {
 	async scheduled(controllee, env, ctx) {
