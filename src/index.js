@@ -53,7 +53,7 @@ export default {
 
 		const keys = Object.keys(data)
 		const need = keys.filter(key => data[key] === date)
-		console.log("Meow", need)
+		console.log("Meow", need, date)
 		if (need.length === 0) {
 			return
 		}
