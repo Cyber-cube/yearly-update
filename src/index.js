@@ -13,13 +13,17 @@ import fs from "node:fs"
 export default {
 	async scheduled(controllee, env, ctx) {
 		const sendRequest = async (repoName) => {
-			await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update/`, {
+			await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
+				method: "POST",
 				headers: {
 					"Accept": "application/vnd.github+json",
 					"X-GitHub-Api-Version": "2022-11-28",
 					"User-Agent": "Yearly-Updater",
 					"Authorization": `Bearer ${env.GH_TOKEN}`,
-				}
+				},
+				body: JSON.stringify({
+					ref: "main"
+				})
 			})
 		}
 		const data = {
@@ -28,7 +32,20 @@ export default {
 			3: "30-4",
 			4: "12-3",
 			5: "14-5",
+			6: "10-6",
+			7: "13-7",
+			8: "5-11",
+			9: "1-8",
+			10: "25-8",
+			11: "14-8",
+			12: "27-5",
+			13: "17-4",
+			14: "25-7",
+			15: "16-8",
+			16: "5-3",
+			17: "24-3",
 			18: "21-5",
+			19: "4-10"
 		}
 
 		const dateAsList = [new Date().getUTCDay(), new Date().getUTCMonth()]
@@ -45,27 +62,9 @@ export default {
 			sendRequest(repoName)
 		})
 
-		fs.readFile("./test.json", ((err, data) => {
-			if (err) throw err
-
-			const parsedData = JSON.parse(data)
-			parsedData.test += 1
-			const object = JSON.stringify(parsedData, false, 2)
-
-			fs.writeFile("./test.json", object, (err) => {
-				if (err) throw err
-			})
-		}))
 
 	},
 	async fetch(request, env, ctx) {
-		fs.readFile("./data.json", (err, data) => {
-			if (err) throw err
-
-			const parsedData = JSON.parse(data)
-			return new Response(`Hello World! ${parsedData.test}`)
-		})
-
-		// return new Response("Hello World!")
+		return new Response("Hello World!")
 	},
 };
