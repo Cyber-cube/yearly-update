@@ -59,6 +59,13 @@ export default {
 
 	},
 	async fetch(request, env, ctx) {
-		return new Response("Hello World!")
+		fs.readFile("./data.json", (err, data) => {
+			if (err) throw err
+
+			const parsedData = JSON.parse(data)
+			return new Response(`Hello World! ${parsedData.test}`)
+		})
+
+		// return new Response("Hello World!")
 	},
 };
