@@ -8,7 +8,7 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-const fs = require("fs")
+import fs from "fs"
 
 export default {
 	async scheduled(controllee, env, ctx) {
