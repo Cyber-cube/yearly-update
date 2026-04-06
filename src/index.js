@@ -81,7 +81,7 @@ export default {
 				"Accept": "application/vnd.github+json",
 				"X-GitHub-Api-Version": "2022-11-28",
 				"User-Agent": "Yearly-Updater",
-				"Authorization": `Bearer ${env.GH_TOKEN}`,
+				"Authorization": `Bearer ${token}`,
 			},
 			body: JSON.stringify({
 				ref: "main"
