@@ -59,6 +59,7 @@ export default {
 		}
 
 		need.forEach((repoName) => {
+			console.log("Meow")
 			sendRequest(repoName)
 		})
 
