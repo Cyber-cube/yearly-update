@@ -12,6 +12,7 @@ import fs from "node:fs"
 
 export default {
 	async scheduled(controller, env, ctx) {
+		const token = env.GH_TOKEN
 		const sendRequest = async (repoName, i) => {
 			const response = await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
@@ -19,13 +20,13 @@ export default {
 					"Accept": "application/vnd.github+json",
 					"X-GitHub-Api-Version": "2022-11-28",
 					"User-Agent": "Yearly-Updater",
-					"Authorization": `Bearer ${env.GH_TOKEN}`,
+					"Authorization": `Bearer ${token}`,
 				},
 				body: JSON.stringify({
 					ref: "main"
 				})
 			})
-			console.log(i)
+			console.log(i, repoName)
 			const output = await response.text()
 			if (response.ok) {
 				console.log(output)
