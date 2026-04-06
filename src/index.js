@@ -26,7 +26,8 @@ export default {
 				})
 			})
 			const output = await response.json()
-			console.log(output)
+			// console.log(output)
+			return output, response.status
 		}
 		const data = {
 			1: "13-5",
