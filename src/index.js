@@ -60,7 +60,7 @@ export default {
 
 		const keys = Object.keys(data)
 		const need = keys.filter(key => data[key] === date)
-		console.log(need)
+		console.log(need, typeof need, need.length)
 		// console.log("Meow", need, date)
 		/* if (need.length === 0) {
 			return
