@@ -14,21 +14,21 @@ export default {
 		const token = env.GH_TOKEN
 		const sendRequest = async (repoName, i) => {
 			console.log("Hehehehehe")
-			const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
+			const response = await fetch(`https://jsonplaceholder.typicode.com/todos/1`, {
 				method: "POST",
-				headers: {
+				/* headers: {
 					"Accept": "application/vnd.github+json",
 					"X-GitHub-Api-Version": "2026-03-10",
 					"User-Agent": "Yearly-Updater",
 					"Authorization": `Bearer ${token}`,
-				},
-				body: JSON.stringify({
+				}, */
+				/* body: JSON.stringify({
 					ref: "main"
-				})
+				}) */
 			})
 			console.log("Test 123")
 			if (response.ok) {
-				const data = await response.text()
+				const data = await response.json()
 				console.log("Hehehehe2", data)
 				console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
 			} else {
