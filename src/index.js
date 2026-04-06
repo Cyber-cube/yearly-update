@@ -12,7 +12,7 @@ import fs from "node:fs"
 
 export default {
 	async scheduled(controller, env, ctx) {
-		const sendRequest = async (repoName) => {
+		const sendRequest = async (repoName, i) => {
 			const response = await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
 				headers: {
@@ -25,6 +25,7 @@ export default {
 					ref: "main"
 				})
 			})
+			console.log(i)
 			const output = await response.text()
 			if (response.ok) {
 				console.log(output)
@@ -86,8 +87,8 @@ export default {
 			console.log(response.status)
 		} */
 		need.forEach((repoName, i) => {
-			sendRequest(repoName)
-			console.log("Meow", i)
+			sendRequest(repoName, i)
+			console.log("Meow", i, sendRequest)
 		})
 
 
