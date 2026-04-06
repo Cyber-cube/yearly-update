@@ -13,6 +13,7 @@ export default {
 	async scheduled(controller, env, ctx) {
 		const token = env.GH_TOKEN
 		const sendRequest = async (repoName, i) => {
+			console.log("Hehehehehe")
 			await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
 				headers: {
@@ -25,6 +26,7 @@ export default {
 					ref: "main"
 				})
 			})
+			console.log("Hehehehe2")
 			console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
 			/* const output = await response.text()
 			if (response.ok) {
@@ -88,7 +90,7 @@ export default {
 		} */
 		need.forEach((repoName, i) => {
 			sendRequest(repoName, i)
-			console.log("Meow", i, sendRequest)
+			console.log("Meow", i, sendRequest, repoName)
 		})
 
 
