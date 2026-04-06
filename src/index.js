@@ -13,7 +13,7 @@ import fs from "node:fs"
 export default {
 	async scheduled(controllee, env, ctx) {
 		const sendRequest = async (repoName) => {
-			const response = await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
+			const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
 				headers: {
 					"Accept": "application/vnd.github+json",
