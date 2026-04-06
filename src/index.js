@@ -14,7 +14,7 @@ export default {
 		const token = env.GH_TOKEN
 		const sendRequest = async (repoName, i) => {
 			console.log("Hehehehehe")
-			await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
+			const response = await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
 				headers: {
 					"Accept": "application/vnd.github+json",
@@ -26,8 +26,12 @@ export default {
 					ref: "main"
 				})
 			})
-			console.log("Hehehehe2")
-			console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
+			if (response.ok) {
+				console.log("Hehehehe2")
+				console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
+			} else {
+				console.log("Something went wrong")
+			}
 			/* const output = await response.text()
 			if (response.ok) {
 				console.log(output)
