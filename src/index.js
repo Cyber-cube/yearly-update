@@ -14,7 +14,7 @@ export default {
 	async scheduled(controller, env, ctx) {
 		const token = env.GH_TOKEN
 		const sendRequest = async (repoName, i) => {
-			const response = await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
+			await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
 				headers: {
 					"Accept": "application/vnd.github+json",
@@ -27,12 +27,12 @@ export default {
 				})
 			})
 			console.log(i, repoName)
-			const output = await response.text()
+			/* const output = await response.text()
 			if (response.ok) {
 				console.log(output)
 			} else {
 				console.log(response.status)
-			}
+			} */
 			// console.log(output)
 		}
 		const data = {
