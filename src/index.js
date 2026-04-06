@@ -14,7 +14,7 @@ export default {
 		const token = env.GH_TOKEN
 		const sendRequest = async (repoName, i) => {
 			console.log("Hehehehehe")
-			const response = await fetch(`https://jsonplaceholder.typicode.com/todos/1`, {
+			const response = ctx.waitUntil(fetch(`https://jsonplaceholder.typicode.com/todos/1`, {
 				method: "POST",
 				/* headers: {
 					"Accept": "application/vnd.github+json",
@@ -25,10 +25,10 @@ export default {
 				/* body: JSON.stringify({
 					ref: "main"
 				}) */
-			})
+			}))
 			console.log("Test 123")
 			if (response.ok) {
-				const data = await response.json()
+				const data = ctx.waitUntil(response.json())
 				console.log("Hehehehe2", data)
 				console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
 			} else {
@@ -95,7 +95,7 @@ export default {
 			console.log(response.status)
 		} */
 		need.forEach(async (repoName, i) => {
-			await sendRequest(repoName, i)
+			ctx.waitUntil(sendRequest(repoName, i))
 			console.log("Meow", i, sendRequest, repoName)
 		})
 
