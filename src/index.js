@@ -11,7 +11,7 @@
 import fs from "node:fs"
 
 export default {
-	async scheduled(controllee, env, ctx) {
+	async scheduled(controller, env, ctx) {
 		const sendRequest = async (repoName) => {
 			const response = await fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
@@ -25,7 +25,7 @@ export default {
 					ref: "main"
 				})
 			})
-			const output = await response.json()
+			const output = await response.text()
 			if (response.ok) {
 				console.log(output)
 			} else {
