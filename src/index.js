@@ -68,14 +68,14 @@ export default {
 
 		const keys = Object.keys(data)
 		const need = keys.filter(key => data[key] === date)
-		console.log(need, typeof need, need.length)
+		// console.log(need, typeof need, need.length)
 		// console.log("Meow", need, date)
 		/* if (need.length === 0) {
 			return
 		} */
 
 
-		/* const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
+		const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
 			method: "POST",
 			headers: {
 				"Accept": "application/vnd.github+json",
@@ -92,11 +92,11 @@ export default {
 			console.log(output)
 		} else {
 			console.log(response.status)
-		} */
-		need.forEach((repoName, i) => {
+		}
+		/* need.forEach((repoName, i) => {
 			sendRequest(repoName, i)
 			console.log("Meow", i, sendRequest, repoName)
-		})
+		}) */
 
 
 	},
