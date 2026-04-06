@@ -12,28 +12,27 @@
 export default {
 	async scheduled(controller, env, ctx) {
 		const token = env.GH_TOKEN
-		const sendRequest = async (repoName, i) => {
-			console.log("Hehehehehe")
-			const response = ctx.waitUntil(fetch(`https://jsonplaceholder.typicode.com/todos/1`, {
+		const sendRequest = async (repoName) => {
+			ctx.waitUntil(fetch(`https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
-				/* headers: {
+				headers: {
 					"Accept": "application/vnd.github+json",
 					"X-GitHub-Api-Version": "2026-03-10",
 					"User-Agent": "Yearly-Updater",
 					"Authorization": `Bearer ${token}`,
-				}, */
-				/* body: JSON.stringify({
+				},
+				body: JSON.stringify({
 					ref: "main"
-				}) */
+				})
 			}))
 			console.log("Test 123")
-			if (response.ok) {
+			/* if (response.ok) {
 				const data = ctx.waitUntil(response.json())
 				console.log("Hehehehe2", data)
 				console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
 			} else {
 				console.log("Something went wrong")
-			}
+			} */
 			/* const output = await response.text()
 			if (response.ok) {
 				console.log(output)
@@ -95,7 +94,7 @@ export default {
 			console.log(response.status)
 		} */
 		need.forEach(async (repoName, i) => {
-			ctx.waitUntil(sendRequest(repoName, i))
+			ctx.waitUntil(sendRequest(repoName))
 			console.log("Meow", i, sendRequest, repoName)
 		})
 
