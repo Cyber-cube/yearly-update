@@ -14,7 +14,7 @@ export default {
 		const token = env.GH_TOKEN
 		const sendRequest = async (repoName, i) => {
 			console.log("Hehehehehe")
-			/* const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
+			const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
 				method: "POST",
 				headers: {
 					"Accept": "application/vnd.github+json",
@@ -32,24 +32,6 @@ export default {
 				console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
 			} else {
 				console.log("Something went wrong")
-			} */
-			const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
-				method: "POST",
-				headers: {
-					"Accept": "application/vnd.github+json",
-					"X-GitHub-Api-Version": "2022-11-28",
-					"User-Agent": "Yearly-Updater",
-					"Authorization": `Bearer ${token}`,
-				},
-				body: JSON.stringify({
-					ref: "main"
-				})
-			})
-			if (response.ok) {
-				const output = await response.text()
-				console.log(output)
-			} else {
-				console.log(response.status)
 			}
 			/* const output = await response.text()
 			if (response.ok) {
@@ -111,8 +93,8 @@ export default {
 		} else {
 			console.log(response.status)
 		} */
-		need.forEach((repoName, i) => {
-			sendRequest(repoName, i)
+		need.forEach(async (repoName, i) => {
+			await sendRequest(repoName, i)
 			console.log("Meow", i, sendRequest, repoName)
 		})
 
