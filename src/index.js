@@ -85,8 +85,9 @@ export default {
 		} else {
 			console.log(response.status)
 		} */
-		need.forEach((repoName) => {
+		need.forEach((repoName, i) => {
 			sendRequest(repoName)
+			console.log("Meow", i)
 		})
 
 
