@@ -27,7 +27,8 @@ export default {
 				})
 			})
 			if (response.ok) {
-				console.log("Hehehehe2")
+				const data = await response.text()
+				console.log("Hehehehe2", data)
 				console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
 			} else {
 				console.log("Something went wrong")
