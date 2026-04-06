@@ -26,6 +26,7 @@ export default {
 					ref: "main"
 				})
 			})
+			console.log("Test 123")
 			if (response.ok) {
 				const data = await response.text()
 				console.log("Hehehehe2", data)
