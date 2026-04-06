@@ -8,7 +8,6 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-import fs from "node:fs"
 
 export default {
 	async scheduled(controller, env, ctx) {
@@ -26,7 +25,7 @@ export default {
 					ref: "main"
 				})
 			})
-			console.log(i, repoName)
+			console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
 			/* const output = await response.text()
 			if (response.ok) {
 				console.log(output)
