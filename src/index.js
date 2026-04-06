@@ -48,7 +48,7 @@ export default {
 			19: "4-10"
 		}
 
-		const dateAsList = [new Date().getUTCDay(), new Date().getUTCMonth()]
+		const dateAsList = [new Date().getUTCDate(), new Date().getUTCMonth()]
 		const date = dateAsList.join("-")
 
 		const keys = Object.keys(data)
