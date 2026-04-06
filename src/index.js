@@ -8,7 +8,6 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-
 export default {
 	async scheduled(controller, env, ctx) {
 		const token = env.GH_TOKEN
@@ -25,25 +24,10 @@ export default {
 					ref: "main"
 				})
 			}))
-			console.log("Test 123")
-			/* if (response.ok) {
-				const data = ctx.waitUntil(response.json())
-				console.log("Hehehehe2", data)
-				console.log(i, repoName, `https://api.github.com/repos/Cyber-cube/${repoName}/actions/workflows/yearly-update.yml/dispatches`)
-			} else {
-				console.log("Something went wrong")
-			} */
-			/* const output = await response.text()
-			if (response.ok) {
-				console.log(output)
-			} else {
-				console.log(response.status)
-			} */
-			// console.log(output)
 		}
 		const data = {
 			1: "13-5",
-			2: "6-3",
+			2: "6-10",
 			3: "30-4",
 			4: "12-3",
 			5: "14-5",
@@ -57,7 +41,7 @@ export default {
 			13: "17-4",
 			14: "25-7",
 			15: "16-8",
-			16: "6-3",
+			16: "5-3",
 			17: "24-3",
 			18: "21-5",
 			19: "4-10"
@@ -68,34 +52,8 @@ export default {
 
 		const keys = Object.keys(data)
 		const need = keys.filter(key => data[key] === date)
-		// console.log(need, typeof need, need.length)
-		// console.log("Meow", need, date)
-		/* if (need.length === 0) {
-			return
-		} */
-
-
-		/* const response = await fetch(`https://api.github.com/repos/Cyber-cube/16/actions/workflows/yearly-update.yml/dispatches`, {
-			method: "POST",
-			headers: {
-				"Accept": "application/vnd.github+json",
-				"X-GitHub-Api-Version": "2022-11-28",
-				"User-Agent": "Yearly-Updater",
-				"Authorization": `Bearer ${token}`,
-			},
-			body: JSON.stringify({
-				ref: "main"
-			})
-		})
-		if (response.ok) {
-			const output = await response.text()
-			console.log(output)
-		} else {
-			console.log(response.status)
-		} */
-		need.forEach(async (repoName, i) => {
+		need.forEach(async (repoName) => {
 			ctx.waitUntil(sendRequest(repoName))
-			console.log("Meow", i, sendRequest, repoName)
 		})
 
 
