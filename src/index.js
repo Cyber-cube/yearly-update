@@ -25,7 +25,7 @@ export default {
 					ref: "main"
 				})
 			})
-			const output = response.json()
+			const output = await response.json()
 			console.log(output)
 		}
 		const data = {
