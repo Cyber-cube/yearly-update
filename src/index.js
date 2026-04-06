@@ -78,8 +78,8 @@ export default {
 				ref: "main"
 			})
 		})
-		const output = await response.json()
 		if (response.ok) {
+			const output = await response.text()
 			console.log(output)
 		} else {
 			console.log(response.status)
